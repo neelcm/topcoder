@@ -4,23 +4,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Queue;
 
-
 public class CaptureThemAll {
 
 	private final int ATOI = 96;
 	private final int BOARD_MIN = 0;
 	private final int BOARD_MAX = 7;
 	
-	private Point[] moves = new Point[]{new Point(2, 1), new Point(2, -1), 
-										new Point(-2, 1), new Point(-2, -1), 
-										new Point(1, 2), new Point(-1, 2), 
-										new Point(1, -2), new Point(-1, -2)};
+	private Point[] moves = new Point[]{new Point(2, 1), new Point(2, -1), new Point(-2, 1), new Point(-2, -1), 
+										new Point(1, 2), new Point(-1, 2), new Point(1, -2), new Point(-1, -2)};
 	
 	private HashMap<Point, Move> chessBoard;
 	private Queue<Move> queue;
-	
-	private boolean didCaptureRook, didCaptureQueen; 
-	
+		
 	private Point Knight, Rook, Queen;
 	
 	class Move {
@@ -115,9 +110,6 @@ public class CaptureThemAll {
 		this.chessBoard = new HashMap<Point, Move>();
 		this.queue = new ArrayDeque<Move>();
 		
-		this.didCaptureRook = false;
-		this.didCaptureQueen = false;
-		
 		for(int i = 0; i <= BOARD_MAX; i++) {
 			for(int j = 0; j <= BOARD_MAX; j++) {
 				Point location = new Point(i, j);
@@ -143,4 +135,5 @@ public class CaptureThemAll {
 		System.out.println(cta.fastKnight("a5", "b7", "e4"));
 		System.out.println(cta.fastKnight("h8", "e2", "d2"));
 	}
+
 }

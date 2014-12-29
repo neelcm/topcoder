@@ -1,3 +1,8 @@
+/*
+ * Single Round Match 207 Round 1 - Division II, Level Three
+ * http://community.topcoder.com/stat?c=problem_statement&pm=2915&rd=5853
+ */
+
 import java.awt.Point;
 import java.util.ArrayDeque;
 import java.util.ArrayList;

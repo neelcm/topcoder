@@ -3,27 +3,27 @@ import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class Puzzle {
+public class WordSearch {
 
 	private enum Direction {
 		HORIZONTAL, VERTICAL, DIAGONAL
 	}
 
-	private static char[][] puzzle;
+	private static char[][] WordSearch;
 
-	public Puzzle(String[] grid) {
-		buildPuzzle(grid);
+	public WordSearch(String[] grid) {
+		buildWordSearch(grid);
 	}
 
-	private void buildPuzzle(String[] grid) {
+	private void buildWordSearch(String[] grid) {
 		int r = grid.length;
 		int c = grid[0].length();
 
-		puzzle = new char[r][c];
+		WordSearch = new char[r][c];
 
 		for (int i = 0; i < r; i++) {
 			for (int j = 0; j < c; j++) {
-				puzzle[i][j] = grid[i].charAt(j);
+				WordSearch[i][j] = grid[i].charAt(j);
 			}
 		}
 	}
@@ -53,7 +53,7 @@ public class Puzzle {
 			if (direction == Direction.HORIZONTAL) {
 				for (int i = 0; i < wordlist.length; i++) {
 					String word = wordlist[i];
-					for (int j = 0; j < puzzle[0].length; j++) {
+					for (int j = 0; j < WordSearch[0].length; j++) {
 						if (buildPath(j, 0, direction).contains(word))
 							result.add(word);
 					}
@@ -63,7 +63,7 @@ public class Puzzle {
 			else if (direction == Direction.VERTICAL) {
 				for (int i = 0; i < wordlist.length; i++) {
 					String word = wordlist[i];
-					for (int j = 0; j < puzzle.length; j++) {
+					for (int j = 0; j < WordSearch.length; j++) {
 						if (buildPath(0, j, direction).contains(word))
 							result.add(word);
 					}
@@ -74,12 +74,12 @@ public class Puzzle {
 				for (int i = 0; i < wordlist.length; i++) {
 					String word = wordlist[i];
 
-					for (int j = 0; j < puzzle.length; j++) {
+					for (int j = 0; j < WordSearch.length; j++) {
 						if (buildPath(j, 0, direction).contains(word))
 							result.add(word);
 					}
 
-					for (int k = 1; k < puzzle[0].length; k++) {
+					for (int k = 1; k < WordSearch[0].length; k++) {
 						if (buildPath(0, k, direction).contains(word))
 							result.add(word);
 					}
@@ -99,16 +99,16 @@ public class Puzzle {
 
 			if (d == Direction.HORIZONTAL) {
 				for (int r = startRow;;) {
-					for (int c = 0; c < puzzle[0].length; c++)
-						buf.append(puzzle[r][c]);
+					for (int c = 0; c < WordSearch[0].length; c++)
+						buf.append(WordSearch[r][c]);
 					break;
 				}
 			}
 
 			else if (d == Direction.VERTICAL) {
-				for (int r = startRow; r < puzzle.length; r++) {
+				for (int r = startRow; r < WordSearch.length; r++) {
 					for (int c = startCol;;) {
-						buf.append(puzzle[r][c]);
+						buf.append(WordSearch[r][c]);
 						break;
 					}
 
@@ -117,8 +117,8 @@ public class Puzzle {
 
 			else if (d == Direction.DIAGONAL) {
 				int r = startRow, c = startCol;
-				while (r < puzzle.length && c < puzzle[0].length) {
-					buf.append(puzzle[r++][c++]);
+				while (r < WordSearch.length && c < WordSearch[0].length) {
+					buf.append(WordSearch[r++][c++]);
 				}
 			}
 
@@ -130,7 +130,7 @@ public class Puzzle {
 	public static void main(String[] args) {
 
 		String[] testGrid = new String[] { "NEEL", "EEYZ", "EXEZ", "LXYL" };
-		Puzzle p = new Puzzle(testGrid);
+		WordSearch p = new WordSearch(testGrid);
 
 		String[] testWordList = new String[] { "NEEL" };
 

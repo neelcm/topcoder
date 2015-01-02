@@ -1,3 +1,7 @@
+/*
+* Multi-threaded search example on the classic word search game 
+*/
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
